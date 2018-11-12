@@ -1,6 +1,8 @@
 package alertdialog.dm.com.dmalertdialog.listeners;
 
-public interface DMBaseClickListener {
+import alertdialog.dm.com.dmalertdialog.DMAlertDialogItem;
+
+public interface DMBaseClickListener<T extends DMAlertDialogItem> {
 
     default void onPositive() {
 
@@ -11,6 +13,14 @@ public interface DMBaseClickListener {
     }
 
     default void onNeutral() {
+
+    }
+
+    default void onDismiss() {
+
+    }
+
+    default void onSelect(final T t) {
 
     }
 }

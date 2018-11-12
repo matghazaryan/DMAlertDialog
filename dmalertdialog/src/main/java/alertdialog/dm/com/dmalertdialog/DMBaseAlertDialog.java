@@ -1,43 +1,49 @@
 package alertdialog.dm.com.dmalertdialog;
 
-import android.content.Context;
-
 import alertdialog.dm.com.dmalertdialog.configs.DMBaseDialogConfigs;
+import alertdialog.dm.com.dmalertdialog.listeners.DMAlertDialog;
 
 public abstract class DMBaseAlertDialog extends DMBasePrepareAlertDialog {
 
     @Override
-    public final void showSuccessDialog(final DMBaseDialogConfigs configs) {
+    public final <T extends DMAlertDialogItem> DMAlertDialog showSuccessDialog(final DMBaseDialogConfigs<T> configs) {
         configs.setDialogType(DialogType.SUCCESSFUL);
-        prepareConfigs(configs);
+        return prepareConfigs(configs);
     }
 
     @Override
-    public final void showConfirmDialog(final DMBaseDialogConfigs configs) {
+    public final <T extends DMAlertDialogItem> DMAlertDialog showConfirmDialog(final DMBaseDialogConfigs<T> configs) {
         configs.setDialogType(DialogType.CONFIRM);
-        prepareConfigs(configs);
+        return prepareConfigs(configs);
     }
 
     @Override
-    public final void showNeutralDialog(final DMBaseDialogConfigs configs) {
+    public final <T extends DMAlertDialogItem> DMAlertDialog showNeutralDialog(final DMBaseDialogConfigs<T> configs) {
         configs.setDialogType(DialogType.NEUTRAL);
-        prepareConfigs(configs);
+        return prepareConfigs(configs);
     }
 
     @Override
-    public final void showWarningDialog(final DMBaseDialogConfigs configs) {
+    public final <T extends DMAlertDialogItem> DMAlertDialog showWarningDialog(final DMBaseDialogConfigs<T> configs) {
         configs.setDialogType(DialogType.WARNING);
-        prepareConfigs(configs);
+        return prepareConfigs(configs);
     }
 
     @Override
-    public final void showErrorDialog(final DMBaseDialogConfigs configs) {
+    public final <T extends DMAlertDialogItem> DMAlertDialog showErrorDialog(final DMBaseDialogConfigs<T> configs) {
         configs.setDialogType(DialogType.ERROR);
-        prepareConfigs(configs);
+        return prepareConfigs(configs);
     }
 
     @Override
-    public final void showToast(Context context, String content, int duration) {
+    public final <T extends DMAlertDialogItem> DMAlertDialog showCustomDialog(final DMBaseDialogConfigs<T> configs) {
+        configs.setDialogType(DialogType.CUSTOM);
+        return prepareConfigs(configs);
+    }
 
+    @Override
+    public final <T extends DMAlertDialogItem> DMAlertDialog showListDialog(final DMBaseDialogConfigs<T> configs) {
+        configs.setDialogType(DialogType.LIST);
+        return prepareConfigs(configs);
     }
 }

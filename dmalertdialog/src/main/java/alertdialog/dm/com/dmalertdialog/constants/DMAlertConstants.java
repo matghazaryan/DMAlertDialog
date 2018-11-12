@@ -2,7 +2,7 @@ package alertdialog.dm.com.dmalertdialog.constants;
 
 public interface DMAlertConstants {
 
-    enum DialogCancelable {
+    enum DialogActionStatus {
         ENABLE,
         DISABLE
     }
@@ -13,5 +13,7 @@ public interface DMAlertConstants {
         NEUTRAL,
         ERROR,
         WARNING,
+        LIST,
+        CUSTOM,
     }
 }

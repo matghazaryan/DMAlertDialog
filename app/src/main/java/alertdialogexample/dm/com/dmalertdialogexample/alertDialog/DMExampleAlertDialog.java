@@ -1,8 +1,10 @@
 package alertdialogexample.dm.com.dmalertdialogexample.alertDialog;
 
 import android.app.Activity;
+import android.graphics.Color;
+import android.support.v4.content.ContextCompat;
 
-import alertdialog.dm.com.dmalertdialog.constants.DMAlertConstants;
+import alertdialog.dm.com.dmalertdialog.DMAlertDialogItem;
 import alertdialog.dm.com.dmalertdialog.DMBaseAlertDialog;
 import alertdialog.dm.com.dmalertdialog.configs.DMBaseDialogConfigs;
 import alertdialogexample.dm.com.dmalertdialogexample.R;
@@ -10,8 +12,8 @@ import alertdialogexample.dm.com.dmalertdialogexample.R;
 public class DMExampleAlertDialog extends DMBaseAlertDialog {
 
     @Override
-    public DMBaseDialogConfigs setSuccessDialog(final Activity activity) {
-        return new DMBaseDialogConfigs(activity)
+    public <T extends DMAlertDialogItem> DMBaseDialogConfigs<T> setSuccessDialog(final Activity activity) {
+        return new DMBaseDialogConfigs<T>(activity)
                 .setTitle("Success")
                 .setContent("Success content")
                 .setPositive("Yes")
@@ -20,16 +22,38 @@ public class DMExampleAlertDialog extends DMBaseAlertDialog {
                 .setTitleColor(R.color.colorPrimaryDark)
                 .setContentColor(R.color.colorPrimaryDark)
                 .setPositiveColor(R.color.colorPrimaryDark)
-                .setAutoDismiss(DMAlertConstants.DialogCancelable.ENABLE)
-                .setCancelable(DMAlertConstants.DialogCancelable.DISABLE);
+                .setAutoDismiss(DialogActionStatus.ENABLE)
+                .setCancelable(DialogActionStatus.DISABLE);
     }
 
     @Override
-    public DMBaseDialogConfigs setErrorDialog(final Activity activity) {
-        return new DMBaseDialogConfigs(activity)
+    public <T extends DMAlertDialogItem> DMBaseDialogConfigs<T> setErrorDialog(final Activity activity) {
+        return new DMBaseDialogConfigs<T>(activity)
                 .setTitle("Error")
                 .setContent("Error content")
                 .setPositive("Yes")
                 .setNegative("No");
+    }
+
+
+    @Override
+    public <T extends DMAlertDialogItem> DMBaseDialogConfigs<T> setListDialog(final Activity activity) {
+        return new DMBaseDialogConfigs<T>(activity)
+//                .setCancelable(DialogActionStatus.DISABLE)
+//                .setAutoDismiss(DialogActionStatus.DISABLE)
+                .setBackgroundColor(ContextCompat.getColor(activity, R.color.colorPrimaryDark))
+                .setDividerColor(ContextCompat.getColor(activity, R.color.colorPrimaryDark))
+                .setPositiveColor(Color.parseColor("#654321"));
+    }
+
+//    @Override
+//    public <T extends DMAlertDialogItem> DMBaseDialogConfigs<T> setConfirmDialog(final Activity activity) {
+//        return new DMBaseDialogConfigs<T>(activity).setContent("");
+//    }
+
+
+    @Override
+    public <T extends DMAlertDialogItem> DMBaseDialogConfigs<T> setConfirmDialog(Activity activity) {
+        return new DMBaseDialogConfigs<T>(activity).setContent("");
     }
 }

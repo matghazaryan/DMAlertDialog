@@ -3,30 +3,43 @@ package alertdialog.dm.com.dmalertdialog.methods;
 import android.content.Context;
 
 import alertdialog.dm.com.dmalertdialog.configs.DMBaseDialogConfigs;
+import alertdialog.dm.com.dmalertdialog.DMAlertDialogItem;
+import alertdialog.dm.com.dmalertdialog.listeners.DMAlertDialog;
 
 public interface DMBaseUseMethods {
 
-    default void showSuccessDialog(final DMBaseDialogConfigs configs) {
+    default <T extends DMAlertDialogItem> DMAlertDialog showSuccessDialog(final DMBaseDialogConfigs<T> configs) {
 
+        return null;
     }
 
-    default void showConfirmDialog(final DMBaseDialogConfigs configs) {
+    default <T extends DMAlertDialogItem> DMAlertDialog showConfirmDialog(final DMBaseDialogConfigs<T> configs) {
 
+        return null;
     }
 
-    default void showNeutralDialog(final DMBaseDialogConfigs configs) {
+    default <T extends DMAlertDialogItem> DMAlertDialog showNeutralDialog(final DMBaseDialogConfigs<T> configs) {
 
+        return null;
     }
 
-    default void showWarningDialog(final DMBaseDialogConfigs configs) {
+    default <T extends DMAlertDialogItem> DMAlertDialog showWarningDialog(final DMBaseDialogConfigs<T> configs) {
 
+        return null;
     }
 
-    default void showErrorDialog(final DMBaseDialogConfigs configs) {
+    default <T extends DMAlertDialogItem> DMAlertDialog showErrorDialog(final DMBaseDialogConfigs<T> configs) {
 
+        return null;
     }
 
-    default void showToast(Context context, String content, int duration) {
+    default <T extends DMAlertDialogItem> DMAlertDialog showCustomDialog(final DMBaseDialogConfigs<T> configs) {
 
+        return null;
+    }
+
+    default <T extends DMAlertDialogItem> DMAlertDialog showListDialog(final DMBaseDialogConfigs<T> configs) {
+
+        return null;
     }
 }
