@@ -1,6 +1,6 @@
 package alertdialog.dm.com.dmalertdialog.configs;
 
-import android.app.Activity;
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
@@ -17,7 +17,7 @@ import alertdialog.dm.com.dmalertdialog.listeners.DMBaseClickListener;
 
 public final class DMBaseDialogConfigs<T extends DMAlertDialogItem> {
 
-    private Activity activity;
+    private Context context;
 
     private String title;
     private String content;
@@ -50,12 +50,12 @@ public final class DMBaseDialogConfigs<T extends DMAlertDialogItem> {
     private DMAlertConstants.DialogType dialogType;
 
 
-    public DMBaseDialogConfigs(final Activity activity) {
-        this.activity = activity;
+    public DMBaseDialogConfigs(final Context context) {
+        this.context = context;
     }
 
-    public Activity getActivity() {
-        return activity;
+    public Context getContext() {
+        return context;
     }
 
     public String getTitle() {
@@ -142,13 +142,13 @@ public final class DMBaseDialogConfigs<T extends DMAlertDialogItem> {
         return dialogType;
     }
 
-    public DMBaseDialogConfigs<T> setActivity(final Activity activity) {
-        this.activity = activity;
+    public DMBaseDialogConfigs<T> setContext(final Context context) {
+        this.context = context;
         return this;
     }
 
     public DMBaseDialogConfigs<T> setTitleRes(final int titleRes) {
-        this.title = activity.getString(titleRes);
+        this.title = context.getString(titleRes);
         return this;
     }
 
@@ -158,7 +158,7 @@ public final class DMBaseDialogConfigs<T extends DMAlertDialogItem> {
     }
 
     public DMBaseDialogConfigs<T> setContentRes(final int contentRes) {
-        this.content = activity.getString(contentRes);
+        this.content = context.getString(contentRes);
         return this;
     }
 
@@ -168,7 +168,7 @@ public final class DMBaseDialogConfigs<T extends DMAlertDialogItem> {
     }
 
     public DMBaseDialogConfigs<T> setPositiveRes(final int positiveRes) {
-        this.positive = activity.getString(positiveRes);
+        this.positive = context.getString(positiveRes);
         return this;
     }
 
@@ -178,7 +178,7 @@ public final class DMBaseDialogConfigs<T extends DMAlertDialogItem> {
     }
 
     public DMBaseDialogConfigs<T> setNegativeRes(final int negativeRes) {
-        this.negative = activity.getString(negativeRes);
+        this.negative = context.getString(negativeRes);
         return this;
     }
 
@@ -188,7 +188,7 @@ public final class DMBaseDialogConfigs<T extends DMAlertDialogItem> {
     }
 
     public DMBaseDialogConfigs<T> setNeutralRes(final int neutralRes) {
-        this.neutral = activity.getString(neutralRes);
+        this.neutral = context.getString(neutralRes);
         return this;
     }
 
@@ -198,12 +198,12 @@ public final class DMBaseDialogConfigs<T extends DMAlertDialogItem> {
     }
 
     public DMBaseDialogConfigs<T> setImageRes(final int imageRes) {
-        this.drawable = ContextCompat.getDrawable(activity, imageRes);
+        this.drawable = ContextCompat.getDrawable(context, imageRes);
         return this;
     }
 
     public DMBaseDialogConfigs<T> setBitmap(final Bitmap bitmap) {
-        this.drawable = new BitmapDrawable(activity.getResources(), bitmap);
+        this.drawable = new BitmapDrawable(context.getResources(), bitmap);
         return this;
     }
 

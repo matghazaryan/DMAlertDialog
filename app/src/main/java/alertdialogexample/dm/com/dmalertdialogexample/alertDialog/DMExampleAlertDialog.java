@@ -1,6 +1,6 @@
 package alertdialogexample.dm.com.dmalertdialogexample.alertDialog;
 
-import android.app.Activity;
+import android.content.Context;
 import android.graphics.Color;
 
 import alertdialog.dm.com.dmalertdialog.DMAlertDialogItem;
@@ -11,8 +11,8 @@ import alertdialogexample.dm.com.dmalertdialogexample.R;
 public class DMExampleAlertDialog extends DMBaseAlertDialog {
 
     @Override
-    public <T extends DMAlertDialogItem> DMBaseDialogConfigs<T> setSuccessDialog(final Activity activity) {
-        return new DMBaseDialogConfigs<T>(activity)
+    public <T extends DMAlertDialogItem> DMBaseDialogConfigs<T> setSuccessDialog(final Context context) {
+        return new DMBaseDialogConfigs<T>(context)
                 .setTitle("Success")
                 .setContent("Success content")
                 .setPositive("Yes")
@@ -26,8 +26,8 @@ public class DMExampleAlertDialog extends DMBaseAlertDialog {
     }
 
     @Override
-    public <T extends DMAlertDialogItem> DMBaseDialogConfigs<T> setErrorDialog(final Activity activity) {
-        return new DMBaseDialogConfigs<T>(activity)
+    public <T extends DMAlertDialogItem> DMBaseDialogConfigs<T> setErrorDialog(final Context context) {
+        return new DMBaseDialogConfigs<T>(context)
                 .setTitle("Error")
                 .setContent("Error content")
                 .setPositive("Yes")
@@ -35,13 +35,13 @@ public class DMExampleAlertDialog extends DMBaseAlertDialog {
     }
 
     @Override
-    public <T extends DMAlertDialogItem> DMBaseDialogConfigs<T> setListDialog(final Activity activity) {
-        return new DMBaseDialogConfigs<T>(activity)
+    public <T extends DMAlertDialogItem> DMBaseDialogConfigs<T> setListDialog(final Context context) {
+        return new DMBaseDialogConfigs<T>(context)
                 .setPositiveColor(Color.parseColor("#654321"));
     }
 
     @Override
-    public <T extends DMAlertDialogItem> DMBaseDialogConfigs<T> setConfirmDialog(Activity activity) {
-        return new DMBaseDialogConfigs<T>(activity).setContent("");
+    public <T extends DMAlertDialogItem> DMBaseDialogConfigs<T> setConfirmDialog(final Context context) {
+        return new DMBaseDialogConfigs<T>(context).setContent("");
     }
 }
