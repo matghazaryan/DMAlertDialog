@@ -1,11 +1,11 @@
 # DMAlertDialog
 
-###About DMAlertDialog Library
+### About DMAlertDialog Library
 
 DMNetworking Library is a powerful library for creating Material and custom dialog which is made on top of [this](https://github.com/afollestad/material-dialogs) library.
 In DMAlertDialog you can describe your dialogs behaviour and start using it.
 
-###How to integrate
+### How to integrate
 
 
 Add it in your root build.gradle at the end of repositories:
