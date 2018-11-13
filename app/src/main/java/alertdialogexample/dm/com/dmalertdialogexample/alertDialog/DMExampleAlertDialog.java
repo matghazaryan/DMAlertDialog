@@ -2,7 +2,6 @@ package alertdialogexample.dm.com.dmalertdialogexample.alertDialog;
 
 import android.app.Activity;
 import android.graphics.Color;
-import android.support.v4.content.ContextCompat;
 
 import alertdialog.dm.com.dmalertdialog.DMAlertDialogItem;
 import alertdialog.dm.com.dmalertdialog.DMBaseAlertDialog;
@@ -35,22 +34,11 @@ public class DMExampleAlertDialog extends DMBaseAlertDialog {
                 .setNegative("No");
     }
 
-
     @Override
     public <T extends DMAlertDialogItem> DMBaseDialogConfigs<T> setListDialog(final Activity activity) {
         return new DMBaseDialogConfigs<T>(activity)
-//                .setCancelable(DialogActionStatus.DISABLE)
-//                .setAutoDismiss(DialogActionStatus.DISABLE)
-                .setBackgroundColor(ContextCompat.getColor(activity, R.color.colorPrimaryDark))
-                .setDividerColor(ContextCompat.getColor(activity, R.color.colorPrimaryDark))
                 .setPositiveColor(Color.parseColor("#654321"));
     }
-
-//    @Override
-//    public <T extends DMAlertDialogItem> DMBaseDialogConfigs<T> setConfirmDialog(final Activity activity) {
-//        return new DMBaseDialogConfigs<T>(activity).setContent("");
-//    }
-
 
     @Override
     public <T extends DMAlertDialogItem> DMBaseDialogConfigs<T> setConfirmDialog(Activity activity) {

@@ -121,7 +121,10 @@ abstract class DMBasePrepareAlertDialog implements DMBaseUseMethods, DMBasePrepa
                     });
                 }
 
-                if (mainConfigs.getDialogType() == DialogType.CONFIRM || mainConfigs.getDialogType() == DialogType.NEUTRAL || mainConfigs.getDialogType() == DialogType.LIST) {
+                if (mainConfigs.getDialogType() == DialogType.CONFIRM
+                        || mainConfigs.getDialogType() == DialogType.NEUTRAL
+                        || mainConfigs.getDialogType() == DialogType.LIST) {
+
                     final String negativeText = mainConfigs.getNegative();
                     if (!TextUtils.isEmpty(negativeText)) {
                         builder.negativeText(negativeText);

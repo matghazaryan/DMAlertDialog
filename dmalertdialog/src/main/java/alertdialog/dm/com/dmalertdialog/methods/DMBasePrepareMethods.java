@@ -2,8 +2,8 @@ package alertdialog.dm.com.dmalertdialog.methods;
 
 import android.app.Activity;
 
-import alertdialog.dm.com.dmalertdialog.configs.DMBaseDialogConfigs;
 import alertdialog.dm.com.dmalertdialog.DMAlertDialogItem;
+import alertdialog.dm.com.dmalertdialog.configs.DMBaseDialogConfigs;
 
 public interface DMBasePrepareMethods {
 
