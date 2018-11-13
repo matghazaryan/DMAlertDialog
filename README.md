@@ -25,13 +25,13 @@ Add it in your root build.gradle at the end of repositories:
 	  }
 
 
-###Introduction
+### Introduction
 
 With DMAlertDialog you can create any type of dialog with Material style. You can also create your custom view. 
 
 ***DMAlertDialog has success, warning, error, confirm and custom type dialog***
 
-###Usage
+### Usage
 
 Create your DMExampleAlertDialog class which should be extended from **DMBaseAlertDialog** and describe your dialogs behaviour.
 
