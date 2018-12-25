@@ -1,8 +1,6 @@
-package alertdialog.dm.com.dmalertdialog.listeners;
+package alertdialog.dm.com.dmalertdialog;
 
-import alertdialog.dm.com.dmalertdialog.DMAlertDialogItem;
-
-public interface DMBaseClickListener<T extends DMAlertDialogItem> {
+public interface DMDialogIBaseClickListener<T extends DMDialogAlertDialogItem> {
 
     default void onPositive() {
     }

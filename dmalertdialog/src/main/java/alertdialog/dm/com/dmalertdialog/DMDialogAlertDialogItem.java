@@ -2,7 +2,7 @@ package alertdialog.dm.com.dmalertdialog;
 
 import android.support.annotation.NonNull;
 
-public abstract class DMAlertDialogItem {
+public abstract class DMDialogAlertDialogItem {
 
     protected abstract String getItemText();
 

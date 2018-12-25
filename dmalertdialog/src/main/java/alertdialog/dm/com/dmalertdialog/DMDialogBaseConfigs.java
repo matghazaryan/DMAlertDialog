@@ -1,4 +1,4 @@
-package alertdialog.dm.com.dmalertdialog.configs;
+package alertdialog.dm.com.dmalertdialog;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -10,12 +10,8 @@ import android.view.View;
 
 import java.util.List;
 
-import alertdialog.dm.com.dmalertdialog.DMAlertDialogItem;
-import alertdialog.dm.com.dmalertdialog.constants.DMAlertConstants;
-import alertdialog.dm.com.dmalertdialog.listeners.DMBaseClickListener;
 
-
-public final class DMBaseDialogConfigs<T extends DMAlertDialogItem> {
+public final class DMDialogBaseConfigs<T extends DMDialogAlertDialogItem> {
 
     private Context context;
 
@@ -38,19 +34,19 @@ public final class DMBaseDialogConfigs<T extends DMAlertDialogItem> {
     private int backgroundColor;
     private int dividerColor;
 
-    private DMAlertConstants.DialogActionStatus autoDismiss;
-    private DMAlertConstants.DialogActionStatus cancelable;
+    private DMDialogIConstants.DialogActionStatus autoDismiss;
+    private DMDialogIConstants.DialogActionStatus cancelable;
 
     private View customView;
 
     private List<T> list;
 
-    private DMBaseClickListener<T> listener;
+    private DMDialogIBaseClickListener<T> listener;
 
-    private DMAlertConstants.DialogType dialogType;
+    private DMDialogIConstants.DialogType dialogType;
 
 
-    public DMBaseDialogConfigs(final Context context) {
+    public DMDialogBaseConfigs(final Context context) {
         this.context = context;
     }
 
@@ -118,11 +114,11 @@ public final class DMBaseDialogConfigs<T extends DMAlertDialogItem> {
         return dividerColor;
     }
 
-    public DMAlertConstants.DialogActionStatus isAutoDismiss() {
+    public DMDialogIConstants.DialogActionStatus isAutoDismiss() {
         return autoDismiss;
     }
 
-    public DMAlertConstants.DialogActionStatus isCancelable() {
+    public DMDialogIConstants.DialogActionStatus isCancelable() {
         return cancelable;
     }
 
@@ -134,155 +130,155 @@ public final class DMBaseDialogConfigs<T extends DMAlertDialogItem> {
         return list;
     }
 
-    public DMBaseClickListener<T> getListener() {
+    public DMDialogIBaseClickListener<T> getListener() {
         return listener;
     }
 
-    public DMAlertConstants.DialogType getDialogType() {
+    public DMDialogIConstants.DialogType getDialogType() {
         return dialogType;
     }
 
-    public DMBaseDialogConfigs<T> setContext(final Context context) {
+    public DMDialogBaseConfigs<T> setContext(final Context context) {
         this.context = context;
         return this;
     }
 
-    public DMBaseDialogConfigs<T> setTitleRes(final int titleRes) {
+    public DMDialogBaseConfigs<T> setTitleRes(final int titleRes) {
         this.title = context.getString(titleRes);
         return this;
     }
 
-    public DMBaseDialogConfigs<T> setTitle(final String title) {
+    public DMDialogBaseConfigs<T> setTitle(final String title) {
         this.title = title;
         return this;
     }
 
-    public DMBaseDialogConfigs<T> setContentRes(final int contentRes) {
+    public DMDialogBaseConfigs<T> setContentRes(final int contentRes) {
         this.content = context.getString(contentRes);
         return this;
     }
 
-    public DMBaseDialogConfigs<T> setContent(final String content) {
+    public DMDialogBaseConfigs<T> setContent(final String content) {
         this.content = content;
         return this;
     }
 
-    public DMBaseDialogConfigs<T> setPositiveRes(final int positiveRes) {
+    public DMDialogBaseConfigs<T> setPositiveRes(final int positiveRes) {
         this.positive = context.getString(positiveRes);
         return this;
     }
 
-    public DMBaseDialogConfigs<T> setPositive(final String positive) {
+    public DMDialogBaseConfigs<T> setPositive(final String positive) {
         this.positive = positive;
         return this;
     }
 
-    public DMBaseDialogConfigs<T> setNegativeRes(final int negativeRes) {
+    public DMDialogBaseConfigs<T> setNegativeRes(final int negativeRes) {
         this.negative = context.getString(negativeRes);
         return this;
     }
 
-    public DMBaseDialogConfigs<T> setNegative(final String negative) {
+    public DMDialogBaseConfigs<T> setNegative(final String negative) {
         this.negative = negative;
         return this;
     }
 
-    public DMBaseDialogConfigs<T> setNeutralRes(final int neutralRes) {
+    public DMDialogBaseConfigs<T> setNeutralRes(final int neutralRes) {
         this.neutral = context.getString(neutralRes);
         return this;
     }
 
-    public DMBaseDialogConfigs<T> setNeutral(final String neutral) {
+    public DMDialogBaseConfigs<T> setNeutral(final String neutral) {
         this.neutral = neutral;
         return this;
     }
 
-    public DMBaseDialogConfigs<T> setImageRes(final int imageRes) {
+    public DMDialogBaseConfigs<T> setImageRes(final int imageRes) {
         this.drawable = ContextCompat.getDrawable(context, imageRes);
         return this;
     }
 
-    public DMBaseDialogConfigs<T> setBitmap(final Bitmap bitmap) {
+    public DMDialogBaseConfigs<T> setBitmap(final Bitmap bitmap) {
         this.drawable = new BitmapDrawable(context.getResources(), bitmap);
         return this;
     }
 
-    public DMBaseDialogConfigs<T> setDrawable(final Drawable drawable) {
+    public DMDialogBaseConfigs<T> setDrawable(final Drawable drawable) {
         this.drawable = drawable;
         return this;
     }
 
-    public DMBaseDialogConfigs<T> setRegularFont(final Typeface regularFont) {
+    public DMDialogBaseConfigs<T> setRegularFont(final Typeface regularFont) {
         this.regularFont = regularFont;
         return this;
     }
 
-    public DMBaseDialogConfigs<T> setMediumFont(final Typeface mediumFont) {
+    public DMDialogBaseConfigs<T> setMediumFont(final Typeface mediumFont) {
         this.mediumFont = mediumFont;
         return this;
     }
 
-    public DMBaseDialogConfigs<T> setTitleColor(final int titleColor) {
+    public DMDialogBaseConfigs<T> setTitleColor(final int titleColor) {
         this.titleColor = titleColor;
         return this;
     }
 
-    public DMBaseDialogConfigs<T> setContentColor(final int contentColor) {
+    public DMDialogBaseConfigs<T> setContentColor(final int contentColor) {
         this.contentColor = contentColor;
         return this;
     }
 
-    public DMBaseDialogConfigs<T> setPositiveColor(final int positiveColor) {
+    public DMDialogBaseConfigs<T> setPositiveColor(final int positiveColor) {
         this.positiveColor = positiveColor;
         return this;
     }
 
-    public DMBaseDialogConfigs<T> setNegativeColor(final int negativeColor) {
+    public DMDialogBaseConfigs<T> setNegativeColor(final int negativeColor) {
         this.negativeColor = negativeColor;
         return this;
     }
 
-    public DMBaseDialogConfigs<T> setNeutralColor(final int neutralColor) {
+    public DMDialogBaseConfigs<T> setNeutralColor(final int neutralColor) {
         this.neutralColor = neutralColor;
         return this;
     }
 
-    public DMBaseDialogConfigs<T> setBackgroundColor(final int backgroundColor) {
+    public DMDialogBaseConfigs<T> setBackgroundColor(final int backgroundColor) {
         this.backgroundColor = backgroundColor;
         return this;
     }
 
-    public DMBaseDialogConfigs<T> setDividerColor(final int dividerColor) {
+    public DMDialogBaseConfigs<T> setDividerColor(final int dividerColor) {
         this.dividerColor = dividerColor;
         return this;
     }
 
-    public DMBaseDialogConfigs<T> setAutoDismiss(final DMAlertConstants.DialogActionStatus autoDismiss) {
+    public DMDialogBaseConfigs<T> setAutoDismiss(final DMDialogIConstants.DialogActionStatus autoDismiss) {
         this.autoDismiss = autoDismiss;
         return this;
     }
 
-    public DMBaseDialogConfigs<T> setCancelable(final DMAlertConstants.DialogActionStatus cancelable) {
+    public DMDialogBaseConfigs<T> setCancelable(final DMDialogIConstants.DialogActionStatus cancelable) {
         this.cancelable = cancelable;
         return this;
     }
 
-    public DMBaseDialogConfigs<T> setCustomView(final View customView) {
+    public DMDialogBaseConfigs<T> setCustomView(final View customView) {
         this.customView = customView;
         return this;
     }
 
-    public DMBaseDialogConfigs<T> setList(final List<T> list) {
+    public DMDialogBaseConfigs<T> setList(final List<T> list) {
         this.list = list;
         return this;
     }
 
-    public DMBaseDialogConfigs<T> setListener(final DMBaseClickListener<T> listener) {
+    public DMDialogBaseConfigs<T> setListener(final DMDialogIBaseClickListener<T> listener) {
         this.listener = listener;
         return this;
     }
 
-    public DMBaseDialogConfigs<T> setDialogType(final DMAlertConstants.DialogType dialogType) {
+    public DMDialogBaseConfigs<T> setDialogType(final DMDialogIConstants.DialogType dialogType) {
         this.dialogType = dialogType;
         return this;
     }

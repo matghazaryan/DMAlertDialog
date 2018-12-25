@@ -8,16 +8,9 @@ import com.afollestad.materialdialogs.MaterialDialog;
 
 import java.util.List;
 
-import alertdialog.dm.com.dmalertdialog.configs.DMBaseDialogConfigs;
-import alertdialog.dm.com.dmalertdialog.constants.DMAlertConstants;
-import alertdialog.dm.com.dmalertdialog.listeners.DMAlertDialog;
-import alertdialog.dm.com.dmalertdialog.listeners.DMBaseClickListener;
-import alertdialog.dm.com.dmalertdialog.methods.DMBasePrepareMethods;
-import alertdialog.dm.com.dmalertdialog.methods.DMBaseUseMethods;
+abstract class DMDialogBasePrepareAlertDialog implements DMDialogIBaseUseMethods, DMDialogIBasePrepareMethods, DMDialogIConstants {
 
-abstract class DMBasePrepareAlertDialog implements DMBaseUseMethods, DMBasePrepareMethods, DMAlertConstants {
-
-    final <T extends DMAlertDialogItem> DMAlertDialog prepareConfigs(final DMBaseDialogConfigs<T> configs) {
+    final <T extends DMDialogAlertDialogItem> DMDialogIAlertDialog prepareConfigs(final DMDialogBaseConfigs<T> configs) {
         try {
             if (configs == null) {
                 throw new Exception("DMBaseDialogConfigs: Config cannot be null");
@@ -29,40 +22,40 @@ abstract class DMBasePrepareAlertDialog implements DMBaseUseMethods, DMBasePrepa
             return null;
         }
 
-        final DMBaseDialogConfigs<T> mainConfigs;
+        final DMDialogBaseConfigs<T> mainConfigs;
 
         switch (configs.getDialogType()) {
             case SUCCESSFUL:
-                final DMBaseDialogConfigs<T> successConfigs = setSuccessDialog(configs.getContext());
-                mainConfigs = successConfigs != null ? successConfigs : new DMBaseDialogConfigs(configs.getContext());
+                final DMDialogBaseConfigs<T> successConfigs = setSuccessDialog(configs.getContext());
+                mainConfigs = successConfigs != null ? successConfigs : new DMDialogBaseConfigs(configs.getContext());
                 break;
             case CONFIRM:
-                final DMBaseDialogConfigs<T> confirmConfigs = setConfirmDialog(configs.getContext());
-                mainConfigs = confirmConfigs != null ? confirmConfigs : new DMBaseDialogConfigs(configs.getContext());
+                final DMDialogBaseConfigs<T> confirmConfigs = setConfirmDialog(configs.getContext());
+                mainConfigs = confirmConfigs != null ? confirmConfigs : new DMDialogBaseConfigs(configs.getContext());
                 break;
             case NEUTRAL:
-                final DMBaseDialogConfigs<T> neutralConfigs = setNeutralDialog(configs.getContext());
-                mainConfigs = neutralConfigs != null ? neutralConfigs : new DMBaseDialogConfigs(configs.getContext());
+                final DMDialogBaseConfigs<T> neutralConfigs = setNeutralDialog(configs.getContext());
+                mainConfigs = neutralConfigs != null ? neutralConfigs : new DMDialogBaseConfigs(configs.getContext());
                 break;
             case WARNING:
-                final DMBaseDialogConfigs<T> warningConfigs = setWarningDialog(configs.getContext());
-                mainConfigs = warningConfigs != null ? warningConfigs : new DMBaseDialogConfigs(configs.getContext());
+                final DMDialogBaseConfigs<T> warningConfigs = setWarningDialog(configs.getContext());
+                mainConfigs = warningConfigs != null ? warningConfigs : new DMDialogBaseConfigs(configs.getContext());
                 break;
             case ERROR:
-                final DMBaseDialogConfigs<T> errorConfigs = setErrorDialog(configs.getContext());
-                mainConfigs = errorConfigs != null ? errorConfigs : new DMBaseDialogConfigs(configs.getContext());
+                final DMDialogBaseConfigs<T> errorConfigs = setErrorDialog(configs.getContext());
+                mainConfigs = errorConfigs != null ? errorConfigs : new DMDialogBaseConfigs(configs.getContext());
                 break;
             case LIST:
-                final DMBaseDialogConfigs<T> listConfigs = setListDialog(configs.getContext());
-                mainConfigs = listConfigs != null ? listConfigs : new DMBaseDialogConfigs(configs.getContext());
+                final DMDialogBaseConfigs<T> listConfigs = setListDialog(configs.getContext());
+                mainConfigs = listConfigs != null ? listConfigs : new DMDialogBaseConfigs(configs.getContext());
                 break;
             case CUSTOM:
-                final DMBaseDialogConfigs<T> customConfigs = setCustomDialog(configs.getContext());
-                mainConfigs = customConfigs != null ? customConfigs : new DMBaseDialogConfigs(configs.getContext());
+                final DMDialogBaseConfigs<T> customConfigs = setCustomDialog(configs.getContext());
+                mainConfigs = customConfigs != null ? customConfigs : new DMDialogBaseConfigs(configs.getContext());
                 break;
             default:
-                final DMBaseDialogConfigs<T> successConfigsDefault = setSuccessDialog(configs.getContext());
-                mainConfigs = successConfigsDefault != null ? successConfigsDefault : new DMBaseDialogConfigs(configs.getContext());
+                final DMDialogBaseConfigs<T> successConfigsDefault = setSuccessDialog(configs.getContext());
+                mainConfigs = successConfigsDefault != null ? successConfigsDefault : new DMDialogBaseConfigs(configs.getContext());
         }
 
 
@@ -113,7 +106,7 @@ abstract class DMBasePrepareAlertDialog implements DMBaseUseMethods, DMBasePrepa
             if (!TextUtils.isEmpty(positiveText)) {
                 builder.positiveText(positiveText);
                 builder.onPositive((dialog, which) -> {
-                    DMBaseClickListener listener = mainConfigs.getListener();
+                    DMDialogIBaseClickListener listener = mainConfigs.getListener();
                     if (listener != null) {
                         listener.onPositive();
                     }
@@ -128,7 +121,7 @@ abstract class DMBasePrepareAlertDialog implements DMBaseUseMethods, DMBasePrepa
                 if (!TextUtils.isEmpty(negativeText)) {
                     builder.negativeText(negativeText);
                     builder.onNegative((dialog, which) -> {
-                        final DMBaseClickListener listener = mainConfigs.getListener();
+                        final DMDialogIBaseClickListener listener = mainConfigs.getListener();
                         if (listener != null) {
                             listener.onNegative();
                         }
@@ -141,7 +134,7 @@ abstract class DMBasePrepareAlertDialog implements DMBaseUseMethods, DMBasePrepa
                 if (!TextUtils.isEmpty(neutralText)) {
                     builder.neutralText(neutralText);
                     builder.onNeutral((dialog, which) -> {
-                        final DMBaseClickListener listener = mainConfigs.getListener();
+                        final DMDialogIBaseClickListener listener = mainConfigs.getListener();
                         if (listener != null) {
                             listener.onNeutral();
                         }
@@ -154,7 +147,7 @@ abstract class DMBasePrepareAlertDialog implements DMBaseUseMethods, DMBasePrepa
                 if (list != null && list.size() > 0) {
                     builder.items(mainConfigs.getList());
                     builder.itemsCallback((dialog, itemView, position, text) -> {
-                        final DMBaseClickListener<T> listener = mainConfigs.getListener();
+                        final DMDialogIBaseClickListener<T> listener = mainConfigs.getListener();
                         if (listener != null) {
                             listener.onSelect(list.get(position));
                         }
@@ -207,7 +200,7 @@ abstract class DMBasePrepareAlertDialog implements DMBaseUseMethods, DMBasePrepa
         builder.autoDismiss(autoDismiss == null || autoDismiss == DialogActionStatus.ENABLE);
 
         builder.dismissListener(dialog -> {
-            final DMBaseClickListener listener = mainConfigs.getListener();
+            final DMDialogIBaseClickListener listener = mainConfigs.getListener();
             if (listener != null) {
                 listener.onDismiss();
             }
@@ -218,9 +211,9 @@ abstract class DMBasePrepareAlertDialog implements DMBaseUseMethods, DMBasePrepa
         return prepareActions(materialDialog);
     }
 
-    private DMAlertDialog prepareActions(final MaterialDialog dialog) {
+    private DMDialogIAlertDialog prepareActions(final MaterialDialog dialog) {
         if (dialog != null) {
-            return new DMAlertDialog() {
+            return new DMDialogIAlertDialog() {
                 @Override
                 public void dismiss() {
                     dialog.dismiss();

@@ -10,11 +10,11 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import alertdialog.dm.com.dmalertdialog.DMAlertDialogItem;
-import alertdialog.dm.com.dmalertdialog.configs.DMBaseDialogConfigs;
-import alertdialog.dm.com.dmalertdialog.constants.DMAlertConstants;
-import alertdialog.dm.com.dmalertdialog.listeners.DMAlertDialog;
-import alertdialog.dm.com.dmalertdialog.listeners.DMBaseClickListener;
+import alertdialog.dm.com.dmalertdialog.DMDialogAlertDialogItem;
+import alertdialog.dm.com.dmalertdialog.DMDialogBaseConfigs;
+import alertdialog.dm.com.dmalertdialog.DMDialogIAlertDialog;
+import alertdialog.dm.com.dmalertdialog.DMDialogIBaseClickListener;
+import alertdialog.dm.com.dmalertdialog.DMDialogIConstants;
 import alertdialogexample.dm.com.dmalertdialogexample.alertDialog.DMExampleAlertDialog;
 import alertdialogexample.dm.com.dmalertdialogexample.models.User;
 
@@ -38,11 +38,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initSimple() {
-        new DMExampleAlertDialog().showSuccessDialog(new DMBaseDialogConfigs<>(this));
+        new DMExampleAlertDialog().showSuccessDialog(new DMDialogBaseConfigs<>(this));
     }
 
     private void initWithListener() {
-        new DMExampleAlertDialog().showSuccessDialog(new DMBaseDialogConfigs<>(this).setListener(new DMBaseClickListener<DMAlertDialogItem>() {
+        new DMExampleAlertDialog().showSuccessDialog(new DMDialogBaseConfigs<>(this).setListener(new DMDialogIBaseClickListener<DMDialogAlertDialogItem>() {
             @Override
             public void onPositive() {
 
@@ -51,22 +51,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initWithSomeParams() {
-        new DMExampleAlertDialog().showSuccessDialog(new DMBaseDialogConfigs<>(this)
+        new DMExampleAlertDialog().showSuccessDialog(new DMDialogBaseConfigs<>(this)
                 .setTitleColor(R.color.colorAccent)
                 .setContent("Content")
                 .setPositive("yes")
-                .setCancelable(DMAlertConstants.DialogActionStatus.ENABLE)
-                .setAutoDismiss(DMAlertConstants.DialogActionStatus.DISABLE));
+                .setCancelable(DMDialogIConstants.DialogActionStatus.ENABLE)
+                .setAutoDismiss(DMDialogIConstants.DialogActionStatus.DISABLE));
     }
 
     @SuppressLint("SetTextI18n")
     private void initCustomView() {
         @SuppressLint("InflateParams") final View view = getLayoutInflater().inflate(R.layout.custom_view, null, false);
-        final DMAlertDialog dialog = new DMExampleAlertDialog()
-                .showCustomDialog(new DMBaseDialogConfigs<>(this)
+        final DMDialogIAlertDialog dialog = new DMExampleAlertDialog()
+                .showCustomDialog(new DMDialogBaseConfigs<>(this)
                         .setCustomView(view)
-                        .setCancelable(DMAlertConstants.DialogActionStatus.ENABLE)
-                        .setListener(new DMBaseClickListener<DMAlertDialogItem>() {
+                        .setCancelable(DMDialogIConstants.DialogActionStatus.ENABLE)
+                        .setListener(new DMDialogIBaseClickListener<DMDialogAlertDialogItem>() {
                             @Override
                             public void onPositive() {
 
@@ -85,12 +85,12 @@ public class MainActivity extends AppCompatActivity {
             userList.add(new User("name " + i, i + 10));
         }
 
-        new DMExampleAlertDialog().showListDialog(new DMBaseDialogConfigs<User>(this)
+        new DMExampleAlertDialog().showListDialog(new DMDialogBaseConfigs<User>(this)
                 .setPositive("Yes")
                 .setNegative("No")
                 .setNeutral("close")
                 .setList(userList)
-                .setListener(new DMBaseClickListener<User>() {
+                .setListener(new DMDialogIBaseClickListener<User>() {
                     @Override
                     public void onSelect(final User user) {
 
@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initError() {
-        new DMExampleAlertDialog().showErrorDialog(new DMBaseDialogConfigs<>(this)
+        new DMExampleAlertDialog().showErrorDialog(new DMDialogBaseConfigs<>(this)
                 .setTitle("Title error")
                 .setContent("error content")
                 .setImageRes(R.drawable.icon_error));

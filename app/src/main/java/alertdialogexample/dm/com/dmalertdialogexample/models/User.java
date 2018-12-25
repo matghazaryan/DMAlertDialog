@@ -1,8 +1,8 @@
 package alertdialogexample.dm.com.dmalertdialogexample.models;
 
-import alertdialog.dm.com.dmalertdialog.DMAlertDialogItem;
+import alertdialog.dm.com.dmalertdialog.DMDialogAlertDialogItem;
 
-public class User extends DMAlertDialogItem {
+public class User extends DMDialogAlertDialogItem {
 
     private String name;
 

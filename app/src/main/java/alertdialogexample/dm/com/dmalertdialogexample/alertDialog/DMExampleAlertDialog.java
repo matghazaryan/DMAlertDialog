@@ -3,16 +3,16 @@ package alertdialogexample.dm.com.dmalertdialogexample.alertDialog;
 import android.content.Context;
 import android.graphics.Color;
 
-import alertdialog.dm.com.dmalertdialog.DMAlertDialogItem;
-import alertdialog.dm.com.dmalertdialog.DMBaseAlertDialog;
-import alertdialog.dm.com.dmalertdialog.configs.DMBaseDialogConfigs;
+import alertdialog.dm.com.dmalertdialog.DMDialogAlertDialogItem;
+import alertdialog.dm.com.dmalertdialog.DMDialogBaseAlertDialog;
+import alertdialog.dm.com.dmalertdialog.DMDialogBaseConfigs;
 import alertdialogexample.dm.com.dmalertdialogexample.R;
 
-public class DMExampleAlertDialog extends DMBaseAlertDialog {
+public class DMExampleAlertDialog extends DMDialogBaseAlertDialog {
 
     @Override
-    public <T extends DMAlertDialogItem> DMBaseDialogConfigs<T> setSuccessDialog(final Context context) {
-        return new DMBaseDialogConfigs<T>(context)
+    public <T extends DMDialogAlertDialogItem> DMDialogBaseConfigs<T> setSuccessDialog(final Context context) {
+        return new DMDialogBaseConfigs<T>(context)
                 .setTitle("Success")
                 .setContent("Success content")
                 .setPositive("Yes")
@@ -26,8 +26,8 @@ public class DMExampleAlertDialog extends DMBaseAlertDialog {
     }
 
     @Override
-    public <T extends DMAlertDialogItem> DMBaseDialogConfigs<T> setErrorDialog(final Context context) {
-        return new DMBaseDialogConfigs<T>(context)
+    public <T extends DMDialogAlertDialogItem> DMDialogBaseConfigs<T> setErrorDialog(final Context context) {
+        return new DMDialogBaseConfigs<T>(context)
                 .setTitle("Error")
                 .setContent("Error content")
                 .setPositive("Yes")
@@ -35,13 +35,13 @@ public class DMExampleAlertDialog extends DMBaseAlertDialog {
     }
 
     @Override
-    public <T extends DMAlertDialogItem> DMBaseDialogConfigs<T> setListDialog(final Context context) {
-        return new DMBaseDialogConfigs<T>(context)
+    public <T extends DMDialogAlertDialogItem> DMDialogBaseConfigs<T> setListDialog(final Context context) {
+        return new DMDialogBaseConfigs<T>(context)
                 .setPositiveColor(Color.parseColor("#654321"));
     }
 
     @Override
-    public <T extends DMAlertDialogItem> DMBaseDialogConfigs<T> setConfirmDialog(final Context context) {
-        return new DMBaseDialogConfigs<T>(context).setContent("");
+    public <T extends DMDialogAlertDialogItem> DMDialogBaseConfigs<T> setConfirmDialog(final Context context) {
+        return new DMDialogBaseConfigs<T>(context).setContent("");
     }
 }

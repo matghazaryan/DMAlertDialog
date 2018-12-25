@@ -1,6 +1,6 @@
-package alertdialog.dm.com.dmalertdialog.constants;
+package alertdialog.dm.com.dmalertdialog;
 
-public interface DMAlertConstants {
+public interface DMDialogIConstants {
 
     enum DialogActionStatus {
         ENABLE,
