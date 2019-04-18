@@ -63,6 +63,8 @@ abstract class DMDialogBasePrepareAlertDialog implements DMDialogIBaseUseMethods
         mainConfigs.setTitle(configs.getTitle() != null ? configs.getTitle() : mainConfigs.getTitle());
         mainConfigs.setContent(configs.getContent() != null ? configs.getContent() : mainConfigs.getContent());
         mainConfigs.setPositive(configs.getPositive() != null ? configs.getPositive() : mainConfigs.getPositive());
+        mainConfigs.setNegative(configs.getNegative() != null ? configs.getNegative() : mainConfigs.getNegative());
+        mainConfigs.setNeutral(configs.getNeutral() != null ? configs.getNeutral() : mainConfigs.getNeutral());
         mainConfigs.setDrawable(configs.getDrawable() != null ? configs.getDrawable() : mainConfigs.getDrawable());
 
         mainConfigs.setRegularFont(configs.getRegularFont() != null ? configs.getRegularFont() : mainConfigs.getRegularFont());
@@ -71,7 +73,7 @@ abstract class DMDialogBasePrepareAlertDialog implements DMDialogIBaseUseMethods
         mainConfigs.setTitleColor(configs.getTitleColor() != 0 ? configs.getTitleColor() : mainConfigs.getTitleColor());
         mainConfigs.setContentColor(configs.getContentColor() != 0 ? configs.getContentColor() : mainConfigs.getContentColor());
         mainConfigs.setPositiveColor(configs.getPositiveColor() != 0 ? configs.getPositiveColor() : mainConfigs.getPositiveColor());
-        mainConfigs.setNegativeColor(configs.getNeutralColor() != 0 ? configs.getNegativeColor() : mainConfigs.getNegativeColor());
+        mainConfigs.setNegativeColor(configs.getNegativeColor() != 0 ? configs.getNegativeColor() : mainConfigs.getNegativeColor());
         mainConfigs.setNeutralColor(configs.getNeutralColor() != 0 ? configs.getNeutralColor() : mainConfigs.getNeutralColor());
         mainConfigs.setBackgroundColor(configs.getBackgroundColor() != 0 ? configs.getBackgroundColor() : mainConfigs.getBackgroundColor());
         mainConfigs.setDividerColor(configs.getDividerColor() != 0 ? configs.getDividerColor() : mainConfigs.getDividerColor());
