@@ -21,7 +21,7 @@ Add it in your root build.gradle at the end of repositories:
     Add the dependency
     
     dependencies {
-	        implementation 'com.github.pmbfish40:DMAlertDialog:1.0.2'
+	        implementation 'com.github.pmbfish40:DMAlertDialog:1.0.3'
 	  }
 
 
