@@ -1,5 +1,8 @@
 package alertdialog.dm.com.dmalertdialog;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.ContextWrapper;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.view.View;
@@ -210,15 +213,25 @@ abstract class DMDialogBasePrepareAlertDialog implements DMDialogIBaseUseMethods
 
         final MaterialDialog materialDialog = builder.show();
 
-        return prepareActions(materialDialog);
+        return prepareActions(configs.getContext(), materialDialog);
     }
 
-    private DMDialogIAlertDialog prepareActions(final MaterialDialog dialog) {
+    private DMDialogIAlertDialog prepareActions(final Context context, final MaterialDialog dialog) {
         if (dialog != null) {
             return new DMDialogIAlertDialog() {
                 @Override
                 public void dismiss() {
-                    dialog.dismiss();
+                    if (context != null) {
+                        final Activity activity = getActivity(context);
+                        if (activity != null &&
+                                !activity.isFinishing() &&
+                                !activity.isDestroyed()) {
+
+                            if (dialog.isShowing()) {
+                                dialog.dismiss();
+                            }
+                        }
+                    }
                 }
 
                 @Override
@@ -228,6 +241,14 @@ abstract class DMDialogBasePrepareAlertDialog implements DMDialogIBaseUseMethods
             };
         }
 
+        return null;
+    }
+
+    private static Activity getActivity(Context context) {
+        if (context == null) return null;
+        if (context instanceof Activity) return (Activity) context;
+        if (context instanceof ContextWrapper)
+            return getActivity(((ContextWrapper) context).getBaseContext());
         return null;
     }
 }
